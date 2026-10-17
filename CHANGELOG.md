@@ -4,7 +4,7 @@
 
 First release prepared under the distinct `vim-input-method-memory` identity.
 Based on upstream TypeScript 1.0.8 with its code and third-party MIT attribution
-preserved. Maintainer identity in this fork's history is normalized to anselmwang.
+preserved. Maintained by anselmwang.
 
 ### Highlights / 主要优势
 

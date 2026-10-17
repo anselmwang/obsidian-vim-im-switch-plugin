@@ -2,7 +2,7 @@
 
 Remember the input method you use for Vim text entry, independently of temporary English command modes.
 
-This desktop-only Obsidian plugin is a maintained TypeScript fork of [Yuan Chen's Vim Input Method Switch](https://github.com/yuanotes/obsidian-vim-im-switch-plugin), based on upstream **1.0.8**, maintained by **anselmwang**. It retains the upstream code and third-party MIT attribution; this fork's history normalizes the maintainer's identity to that handle. The new plugin ID is **`vim-input-method-memory`**; it is a separate installation, not an automatic update of the old plugin.
+This desktop-only Obsidian plugin is a maintained TypeScript fork of [Yuan Chen's Vim Input Method Switch](https://github.com/yuanotes/obsidian-vim-im-switch-plugin), based on upstream **1.0.8**, maintained by **anselmwang**. It retains the upstream code and third-party MIT attribution. The new plugin ID is **`vim-input-method-memory`**; it is a separate installation, not an automatic update of the old plugin.
 
 ## Why use this fork?
 
