@@ -3,7 +3,28 @@
 ## 1.1.0 - Vim Input Method Memory
 
 First release prepared under the distinct `vim-input-method-memory` identity.
-Based on upstream TypeScript 1.0.8 with its Git ancestry and MIT license preserved.
+Based on upstream TypeScript 1.0.8 with its code and third-party MIT attribution
+preserved. Maintainer identity in this fork's history is normalized to anselmwang.
+
+### Highlights / 主要优势
+
+- **Less Windows switching overhead:** shell-free calls avoid the old observed
+  shell-startup delay; actual speed still depends on the helper and OS.
+  **减少 Windows 切换开销：**避开已观察到的 shell 启动延迟，不作通用提速保证。
+- **Remember either input preference:** Chinese or English text entry is kept
+  separate from temporary English command modes.
+  **中英文偏好都能记住：**正文偏好与命令模式的临时英文分开保存。
+- **Opt-in plugin cooperation:** supports integrations such as Key Sequence
+  2.1.0, while also working standalone.
+  **可与其他插件协作：**支持 Key Sequence 等主动集成，也可独立使用。
+- **Context-aware return:** cancelling a menu or jumping notes does not let a
+  delayed callback restore Chinese into Normal mode.
+  **返回状态更合理：**取消菜单、跳转笔记后按当前模式恢复，避免 Normal 误切中文。
+- **More predictable switching and visible errors:** scoped ownership and queued
+  operations handle stale callbacks; failures/timeouts are surfaced.
+  **切换更可控、错误可见：**处理过期回调，并提示 helper 失败和超时。
+
+### Changes
 
 - Keep Insert/Replace input preference separate from temporary English.
 - Keep focused Normal/Visual and cooperating menus in English; note jumps no

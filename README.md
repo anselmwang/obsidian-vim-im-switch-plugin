@@ -2,7 +2,27 @@
 
 Remember the input method you use for Vim text entry, independently of temporary English command modes.
 
-This desktop-only Obsidian plugin is a maintained TypeScript fork of [Yuan Chen's Vim Input Method Switch](https://github.com/yuanotes/obsidian-vim-im-switch-plugin), based on upstream **1.0.8**. It keeps the upstream Git history and MIT attribution. The new plugin ID is **`vim-input-method-memory`**; it is a separate installation, not an automatic update of the old plugin.
+This desktop-only Obsidian plugin is a maintained TypeScript fork of [Yuan Chen's Vim Input Method Switch](https://github.com/yuanotes/obsidian-vim-im-switch-plugin), based on upstream **1.0.8**, maintained by **anselmwang**. It retains the upstream code and third-party MIT attribution; this fork's history normalizes the maintainer's identity to that handle. The new plugin ID is **`vim-input-method-memory`**; it is a separate installation, not an automatic update of the old plugin.
+
+## Why use this fork?
+
+- **Less switching overhead on Windows:** direct helper calls avoid the shell-startup lag observed with the old shell-based implementation. Actual speed depends on your helper and OS; this is not a universal or quantified speed guarantee.
+- **Remember Chinese or English while typing:** Insert/Replace restores your remembered body-entry preference; Normal/Visual uses English without overwriting that preference.
+- **Work with other plugins:** opt-in integrations such as Key Sequence 2.1.0 can temporarily request English. Vim Input Method Memory also works independently.
+- **Return to the right input mode:** cancelling a menu or jumping to another note uses the current context, rather than a delayed callback restoring Chinese into Normal mode.
+- **Fewer stale changes, clearer failures:** queued operations and scoped menu ownership prevent old callbacks from winning; helper failures/timeouts are reported, with optional diagnostics for troubleshooting.
+
+See [Behavior](#behavior), [integration](#key-sequence-and-other-integrations) and [platform limits](#platform-support-and-limits) below, including the remaining focus-race limits of external helpers.
+
+### 相比原版的主要优势
+
+- **减少 Windows 切换开销：**直接调用 helper，避开旧版 shell 启动造成的已观察到的延迟；实际速度取决于 helper 和系统，不承诺所有平台都更快，也没有通用的量化提速保证。
+- **中英文偏好都能记住：**Insert/Replace 恢复正文输入偏好，Normal/Visual 临时使用英文，不会把临时英文误记为正文偏好。
+- **可与其他插件协作：**例如 Key Sequence 2.1.0 可以按需临时请求英文；本插件也能独立使用，不依赖快捷键插件。
+- **菜单关闭、笔记跳转后状态更合理：**按当前编辑模式决定是否恢复输入法，避免延迟回调把 Normal 模式误切回中文。
+- **减少过期切换，错误可见：**串行操作和独立菜单所有权避免旧回调覆盖新状态；helper 失败、超时会提示，并可按需开启诊断。
+
+具体行为及外部 helper 仍存在的焦点竞争限制，请参阅下文。
 
 ## Behavior
 
@@ -110,7 +130,7 @@ See [CHANGELOG.md](CHANGELOG.md) for release notes and [RELEASING.md](RELEASING.
 
 ## Attribution
 
-Original plugin: **Yuan Chen / yuanotes**, [upstream repository](https://github.com/yuanotes/obsidian-vim-im-switch-plugin). Maintained fork: **anselmwang / anselmwang**. The TypeScript baseline is upstream tag `1.0.8`, commit `6c64b885e7a610f7260dcf04dca3618e77202629`; its ancestry includes earlier fixes contributed by anselmwang.
+Original plugin: **Yuan Chen / yuanotes**, [upstream repository](https://github.com/yuanotes/obsidian-vim-im-switch-plugin). Maintained fork: **anselmwang**. The TypeScript baseline is upstream tag `1.0.8`, commit `6c64b885e7a610f7260dcf04dca3618e77202629`; its source includes earlier fixes contributed by anselmwang.
 
 The upstream MIT license, including **Copyright (c) 2021 Michael Brenan**, is preserved verbatim in [LICENSE](LICENSE) (renamed from `LICENSE.txt`) and embedded in the release JavaScript. Historical assets and helper source remain in Git history; this fork does not claim authorship of them.
 
